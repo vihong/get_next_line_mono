@@ -6,7 +6,7 @@
 /*   By: vi-hong <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 17:01:53 by vi-hong           #+#    #+#             */
-/*   Updated: 2017/04/02 18:16:49 by vi-hong          ###   ########.fr       */
+/*   Updated: 2017/04/02 19:49:30 by vi-hong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define BUFF_SIZE 64
 # include <sys/types.h>
-# include <stdlib.h>
 # include <unistd.h>
 # include "./libft/libft.h"
 
