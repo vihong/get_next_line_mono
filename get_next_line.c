@@ -6,7 +6,7 @@
 /*   By: vi-hong <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 00:15:07 by vi-hong           #+#    #+#             */
-/*   Updated: 2017/04/02 19:48:38 by vi-hong          ###   ########.fr       */
+/*   Updated: 2017/04/03 17:39:58 by vi-hong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,26 @@ int		empty_s(char **line, char **stock)
 int		get_next_line(const int fd, char **line)
 {
 	char		buf[BUFF_SIZE + 1];
-	static char	*stock[256];
+	static char	*stock;
 	int			ret;
 
-	if (fd < 0 || fd > 255 || BUFF_SIZE <= 0)
+	if (fd < 0 || BUFF_SIZE <= 0)
 		return (-1);
-	if (!stock[fd])
-		stock[fd] = ft_strdup("");
+	if (!stock)
+		stock = ft_strdup("");
 	ret = 0;
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		stock[fd] = ft_strjoinfree(stock[fd], buf);
-		if (check_s(stock[fd]) != -1)
-			return (clean_stock(line, &stock[fd]));
+		stock = ft_strjoinfree(stock, buf);
+		if (check_s(stock) != -1)
+			return (clean_stock(line, &stock));
 	}
 	if (ret == -1)
 		return (-1);
-	if (check_s(stock[fd]) != -1)
-		return (clean_stock(line, &stock[fd]));
-	if (ft_strlen(stock[fd]) != 0)
-		return (empty_s(line, &stock[fd]));
+	if (check_s(stock) != -1)
+		return (clean_stock(line, &stock));
+	if (ft_strlen(stock) != 0)
+		return (empty_s(line, &stock));
 	return (0);
 }
